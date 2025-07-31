@@ -7,25 +7,19 @@ import {
 
 
 const mslHandler = defineFunction({
-  entry: './handler.ts'
+  entry: 'GetMSLResponse'
 })
 
 const schema = a.schema({
-  getMSLResponce: a.customType({
-      id : a.string(),
-      name : a.string(),
-      title : a.string(),
-      email : a.string(),
-      phone : a.string(),
-      firstName : a.string(),
-      lastName : a.string(),
-      company : a.string(),
-      accountId : a.string(),
+  getMSLResponses: a.customType({
+    statusCode: a.string(),
+    headers: a.string(),
+    body : a.string(),
     }),
-   MSLResponce:a
+   MSLResponses:a
     .query()
     .arguments({ request: a.string()})
-    .returns(a.ref('getMSLResponce'))
+    .returns(a.ref('getMSLResponses'))
     .authorization(allow => [allow.guest()])
     .handler(a.handler.function(mslHandler))
 });

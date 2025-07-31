@@ -32,7 +32,6 @@ client
   .catch((error) => {
     console.error("Error fetching secrets:", error);
   });
-
 export const handler =
 async (
   event: { body: string }
